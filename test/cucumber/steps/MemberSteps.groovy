@@ -1,7 +1,7 @@
 import pages.LoginPage
+import pages.RegisterPage
 import pages.member.MemberCreatePage
 import pages.member.MemberViewPage
-import pages.RegisterPage
 import rgms.authentication.User
 import rgms.member.Member
 import steps.MemberTestDataAndOperations
@@ -99,6 +99,13 @@ Then(~'^the member "([^"]*)" is not registered$') { String username ->
     assert users.size() == 1
 }
 
+//TODO duplicação temporária devido à confusão conceitual entre user e member
+Then(~'^the member named "([^"]*)" is not registered$') { String name ->
+    members = Member.findAllByName(name);
+    assert members.size() == 0
+}
+
+
 Given(~'^I am at the create member page$') { ->
     to LoginPage
     at LoginPage
@@ -129,6 +136,7 @@ Then(~'^I am on the member show page$') { ->
     page.fillMemberDetails(name, username, email, university)
 }*/
 
+//TODO verificação teria que ser específica, bem menos parcial do que a abaixo
 Then(~'^I am still on the create member page with the error message$') { ->
     at MemberCreatePage
     //assert mensagem != null
@@ -170,4 +178,17 @@ Then(~'^I see default data filled on register form$') { ->
     at RegisterPage
     defaultUniversity = "Federal University of Pernambuco"
     assert page.compareMemberUniversity(defaultUniversity)
+}
+
+Given(~'^the system has member with email "([^"]*)"$') { String email ->
+    String name = "Rodolfo"
+    MemberTestDataAndOperations.createMemberWithEmail(name, email)
+    member = Member.findByEmail(email)
+    assert member.name == name
+}
+
+When(~'^I try to create the member "([^"]*)" with email "([^"]*)"$') { String name, String email ->
+    MemberTestDataAndOperations.createMemberWithEmail(name, email)
+    //member = Member.findByEmail(email)
+    //assert member.name == name
 }

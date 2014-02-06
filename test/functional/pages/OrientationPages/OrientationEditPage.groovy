@@ -22,25 +22,25 @@ class OrientationEditPage extends Page {
         }
     }
 
-	def editTituloTese(String novovalor){
+    def editTituloTese(String novovalor) {
         $("form").tituloTese = novovalor
     }
 
-    def editYear(String newYear){
+    def editYear(String newYear) {
         $("form").anoPublicacao = Integer.parseInt(newYear)
     }
 
-	
-	def select(String s) {
-		$("form").find("input", value: s).click()
-	}
 
-    def confirmEdit(){
-        $('input', class:'save').click()
+    def select(String s) {
+        $("form").find("input", value: s).click()
+    }
+
+    def confirmEdit() {
+        $('input', class: 'save').click()
     }
 
 
-    def delete(){
+    def delete() {
         assert withConfirm(true) { $("form").find('input', class: 'delete').click() }
     }
 

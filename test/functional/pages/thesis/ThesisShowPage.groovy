@@ -12,8 +12,8 @@ class ThesisShowPage extends Page {
         def currentTese = gp.msg("default.tese.label")
         def currentTitle = gp.msg("default.show.label", [currentTese])
         title ==~ currentTitle
-	}
-	
+    }
+
     static content = {
     }
 
@@ -21,7 +21,7 @@ class ThesisShowPage extends Page {
         $("form").find('a', class: 'edit').click()
     }
 
-    def delete(){
+    def delete() {
         assert withConfirm(true) { $("form").find('input', class: 'delete').click() }
     }
 

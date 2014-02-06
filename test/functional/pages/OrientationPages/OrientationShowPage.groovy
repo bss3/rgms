@@ -27,7 +27,7 @@ class OrientationShowPage extends Page {
         $("form").find('a', class: 'edit').click()
     }
 
-    def edit(){
+    def edit() {
         $('a', class: 'edit').click()
     }
 
@@ -35,8 +35,8 @@ class OrientationShowPage extends Page {
         assert withConfirm(true) { $("form").find('input', class: 'delete').click() }
     }
 
-    def showList(){
-        $('a', class:'list').click()
+    def showList() {
+        $('a', class: 'list').click()
     }
 
 //#if ($Twitter)

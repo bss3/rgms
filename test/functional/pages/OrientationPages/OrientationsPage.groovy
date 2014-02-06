@@ -8,16 +8,16 @@ class OrientationsPage extends Page {
     static url = "orientation/list"
 
 
-	static at = {
+    static at = {
 
-		//title ==~ /Orientation Listagem/
+        //title ==~ /Orientation Listagem/
 
         GetPageTitle gp = new GetPageTitle()
-		def currentOrientation = gp.msg("default.orientation.label")
-		def currentTitle = gp.msg("default.list.label", [currentOrientation])
-		
-		title ==~ currentTitle
-	}
+        def currentOrientation = gp.msg("default.orientation.label")
+        def currentTitle = gp.msg("default.list.label", [currentOrientation])
+
+        title ==~ currentTitle
+    }
 
     static content = {
         flashmessage {
@@ -25,9 +25,9 @@ class OrientationsPage extends Page {
         }
     }
 
-	def selectNewOrientation() {
-		$('a', class:'create').click()
-	}
+    def selectNewOrientation() {
+        $('a', class: 'create').click()
+    }
 
     def selectViewOrientation(title) {
 
@@ -46,24 +46,24 @@ class OrientationsPage extends Page {
         /*def showLink = (getRow().find([text:title]))[0].find('td')
         System.out.println("testando "+showLink)
         showLink[0].click()*/
-	}
+    }
 
-    def checkOrientationAtList(title,row){
+    def checkOrientationAtList(title, row) {
         def orientationColumns = getRow()[row].find('td')
 
         def testorientation = Orientation.findByTituloTese(title)
-		assert orientationColumns[1].text() == testorientation.tipo
-		assert orientationColumns[2].text() == testorientation.orientando
-		assert orientationColumns[4].text() == testorientation.tituloTese
-	}
+        assert orientationColumns[1].text() == testorientation.tipo
+        assert orientationColumns[2].text() == testorientation.orientando
+        assert orientationColumns[4].text() == testorientation.tituloTese
+    }
 
-    def checkIfOrientationListIsEmpty(){
+    def checkIfOrientationListIsEmpty() {
         def conferenciaColumns = getRow()[0].find('td')
 
         assert conferenciaColumns.size() < 8
     }
 
-    def uploadWithoutFile(){
+    def uploadWithoutFile() {
         $('input.save').click()
     }
 }

@@ -27,22 +27,22 @@ class ThesisPage extends Page {
         $('a.create').click()
     }
 
-    def getRow(){
+    def getRow() {
 
         def listDiv = $('div', id: 'list-tese')
         def thesisTable = (listDiv.find('table'))[0]
-        def thesisRow  = thesisTable.find('tbody').find('tr')
+        def thesisRow = thesisTable.find('tbody').find('tr')
 
         return thesisRow
     }
 
     def selectViewThesis(title) {
         //getRow()
-        def showLink = getRow().find('td').find([text:title])
+        def showLink = getRow().find('td').find([text: title])
         showLink.click()
     }
 
-    def checkTeseAtList(title,row){
+    def checkTeseAtList(title, row) {
         def teseColumns = getRow()[row].find('td')
 
         def testtese = Tese.findByTitle(title)

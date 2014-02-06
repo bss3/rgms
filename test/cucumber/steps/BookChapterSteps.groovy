@@ -1,11 +1,10 @@
-import pages.*
-import cucumber.runtime.PendingException
-import rgms.member.Member
+import pages.BookChapterCreatePage
+import pages.BookChapterPage
+import pages.LoginPage
+import pages.PublicationsPage
 import rgms.publication.BookChapter
-import rgms.publication.Periodico
-import steps.TestDataAndOperations
-import steps.TestDataAndOperationsPublication
 import steps.BookChapterTestDataAndOperations
+import steps.TestDataAndOperationsPublication
 
 import static cucumber.api.groovy.EN.*
 
@@ -95,6 +94,7 @@ Then(~'My resulting book chapter list contains "([^"]*)"$') { String title ->
     at BookChapterPage
     page.checkBookChapterAtList(title, 0)
 }
+
 When(~'^I go to new book chapter page$') { ->
 //    to BookChapterPage
     at BookChapterPage

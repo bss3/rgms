@@ -1,14 +1,17 @@
-import pages.OrientationPages.*
-import pages.*
+import org.apache.shiro.SecurityUtils
+import org.apache.shiro.subject.Subject
+import org.apache.shiro.util.ThreadContext
+import pages.LoginPage
+import pages.OrientationPages.OrientationCreatePage
+import pages.OrientationPages.OrientationEditPage
+import pages.OrientationPages.OrientationShowPage
+import pages.OrientationPages.OrientationsPage
+import pages.PublicationsPage
 import rgms.authentication.User
 import rgms.member.Member
 import rgms.member.Orientation
 import steps.MemberTestDataAndOperations
 import steps.OrientationTestDataAndOperations
-
-import org.apache.shiro.util.ThreadContext
-import org.apache.shiro.subject.Subject
-import org.apache.shiro.SecurityUtils
 
 import static cucumber.api.groovy.EN.*
 
@@ -71,7 +74,7 @@ When(~'^I fill the orientation title with "([^"]*)"$') { String title ->
 
 }
 
-And(~'^I select the list orientation option$'){ ->
+And(~'^I select the list orientation option$') { ->
     at OrientationShowPage
     page.showList()
 
@@ -91,7 +94,7 @@ Given(~'^I am at the orientation page$') { ->
     at OrientationsPage
 }
 
-And (~'^the orientation "([^"]*)" is stored in the system$'){ String title ->
+And(~'^the orientation "([^"]*)" is stored in the system$') { String title ->
     page.selectNewOrientation()
 
     at OrientationCreatePage
@@ -126,7 +129,7 @@ When(~'^I select the change option at the orientation edit page$') { ->
     page.confirmEdit()
 }
 
-Then(~'^the edited orientation "([^"]*)" is properly stored by the system$'){ String title ->
+Then(~'^the edited orientation "([^"]*)" is properly stored by the system$') { String title ->
     at OrientationShowPage
     orientation = Orientation.findByTituloTese(title)
     assert orientation != null
@@ -198,16 +201,16 @@ Then(~'^I am still on the create orientation page with an error message$') { ->
  */
 Given(~'^Exists a member "([^"]*)" with username "([^"]*)" that has been an registered member$') { String name, String username ->
 
-    MemberTestDataAndOperations.createMember(username,"")
+    MemberTestDataAndOperations.createMember(username, "")
     member = Member.findByName(name)
-    user = User.findByUsernameAndAuthor(username,member)
+    user = User.findByUsernameAndAuthor(username, member)
     assert user != null
 }
 //#1
 
 Then(~'^the orientation "([^"]*)" with orientated member "([^"]*)" is properly stored by the system') { String entitled, String username ->
     user = User.findByUsername(username)
-    orientation = Orientation.findByTituloTeseAndOrientador(entitled,user)
+    orientation = Orientation.findByTituloTeseAndOrientador(entitled, user)
     assert orientation == null
 }
 
@@ -258,8 +261,6 @@ When(~'^I select the option remove at the orientation show page$') { ->
 }
 
 //FUNCOES AUXILIARES
-
-
 // o problema de duplicação que este método resolve não foi identificado pela ferramenta de detecção de clones
 def Login() {
     to LoginPage

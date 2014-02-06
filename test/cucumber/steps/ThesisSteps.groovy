@@ -1,16 +1,12 @@
-import pages.PublicationsPage
-import pages.thesis.ThesisEditPage
-import rgms.authentication.User
-import steps.ThesisTestDataAndOperations
 import pages.LoginPage
+import pages.PublicationsPage
+import pages.ThesisPage
 import pages.thesis.ThesisCreatePage
 import pages.thesis.ThesisShowPage
+import rgms.authentication.User
 import rgms.publication.Tese
 import steps.TestDataAndOperationsPublication
-import pages.ThesisPage
-import rgms.member.Member
-
-import java.io.File
+import steps.ThesisTestDataAndOperations
 
 import static cucumber.api.groovy.EN.*
 import org.codehaus.groovy.grails.web.context.ServletContextHolder

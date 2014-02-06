@@ -76,8 +76,8 @@ grails.hibernate.cache.queries = true
  * @author penc
  */
 //#if($contextualInformation)
-defaultUniversity   = "Federal University of Pernambuco";
-defaultCity         = "Recife";
+defaultUniversity = "Federal University of Pernambuco";
+defaultCity = "Recife";
 //#end
 
 // set per-environment serverURL stem for creating absolute links
@@ -120,4 +120,4 @@ log4j = {
 }
 
 
-grails.config.locations = ["classpath:facebook.properties" ,"file: ../rgms/grails-app/conf/facebook.properties"]
+grails.config.locations = ["classpath:facebook.properties", "file: ../rgms/grails-app/conf/facebook.properties"]

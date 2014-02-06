@@ -43,7 +43,7 @@ class OrientationCreatePage extends Page {
 
     def selectCreateOrientation() {
         //$("input", name: "create").click()
-        $("input", name:"create", class:"save").click()
+        $("input", name: "create", class: "save").click()
     }
 
 }

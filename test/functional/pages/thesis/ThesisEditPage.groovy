@@ -6,7 +6,7 @@ import pages.GetPageTitle
 /**
  * Created by Bruno Soares on 16/01/14.
  */
-class ThesisEditPage extends Page{
+class ThesisEditPage extends Page {
     static url = "tese/edit/1"
 
     static at = {

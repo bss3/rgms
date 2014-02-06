@@ -1,6 +1,6 @@
 package steps
 
-import rgms.publication.*
+import rgms.publication.TeseController
 
 class ThesisTestDataAndOperations {
 
@@ -9,9 +9,9 @@ class ThesisTestDataAndOperations {
         ThesisOrDissertationTestDataAndOperations.createThesisOrDissertation(title, filename, school, cont)
     }
 
-    static public void deleteTeseByTitle(String title){
+    static public void deleteTeseByTitle(String title) {
         def cont = new TeseController()
-        ThesisOrDissertationTestDataAndOperations.deleteThesisOrDissertation(title,cont)
+        ThesisOrDissertationTestDataAndOperations.deleteThesisOrDissertation(title, cont)
     }
 
 }

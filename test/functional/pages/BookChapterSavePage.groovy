@@ -1,8 +1,5 @@
 package pages
 
-import geb.Page
-import rgms.publication.BookChapter
-
 class BookChapterSavePage extends FormPage {
     static url = "bookChapter/save"
 
@@ -13,7 +10,7 @@ class BookChapterSavePage extends FormPage {
 
     static content = {
         flashmessage {
-            $("div", class: "message",role:"status")
+            $("div", class: "message", role: "status")
         }
     }
 }
